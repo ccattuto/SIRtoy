@@ -1,0 +1,117 @@
+body {
+  font-family: Sans-Serif;
+}
+
+div#container {
+   border-style: solid;
+   border-width: 1px;
+   border-color: #eee;
+   margin: 10px;
+}
+
+div#counters {
+   font-size: 36px;
+   float: left;
+   height: 180px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+div#controls {
+   font-size: 36px;
+   float: right;
+   height: 180px;
+   margin: 20px;
+   text-align: right;
+}
+
+#p_SI, #p_IR {
+ width: 75px;
+ padding: 3px;
+ font-size: 32px;
+ border: 1px solid #aaa;
+}
+
+span#susceptible {
+	color: #0ff;
+    font-size: 14px;
+}
+
+span#infected {
+	color: #ff0;
+    font-size: 14px;
+}
+
+span#recovered {
+	color: #f0f;
+    font-size: 14px;
+}
+
+span#count_S, span#count_I, span#count_R {
+   font-size: 48px;
+   font-weight:bold;
+}
+
+div#graph-layout {
+   width: 900px;
+   height: 500px;
+   margin: 20px;
+   background: #fafafa;
+   border-style: solid;
+   border-width: 1px;
+   border-color: #eee;
+   clear: both;
+   position: relative;
+}
+
+div#epicurves {
+   width: 320px;
+   height: 180px;
+   background: #fff;
+   margin: 20px;
+   float: left;
+}
+
+span#counters {
+   text-align: left;
+}
+
+circle.node {
+  stroke: #000;
+  stroke-width: 1.5px;
+  fill: #ff0;
+}
+
+line.link {
+  stroke: #333;
+  stroke-opacity: .75;
+  stroke-width: 1.5px;
+}
+
+div#graph-control {
+   position: absolute;
+   top: 0px;
+   width: 100%;
+   z-index: 0;
+}
+
+button#reset-button {
+  float: right;
+  font-size: 28px;
+  color: #666;
+}
+
+span#start-text {
+  font-size: 28px;
+  text-align: left;
+  float: left;
+  color: #666;
+  padding: 10px;
+}
+
+div#credits {
+   text-align: right;
+   font-size: 14px;
+   padding: 5px;
+}
+

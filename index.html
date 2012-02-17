@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>                                                                  
+ <head>                                                                  
+ <script type="text/javascript" src="jquery-1.7.1.min.js"></script>          
+ <script type="text/javascript" src="jquery.flot.min.js"></script>
+ <script type="text/javascript" src="d3.min.js"></script>
+ <script type="text/javascript" src="d3.geom.min.js"></script>
+ <script type="text/javascript" src="d3.layout.min.js"></script>
+ <link type="text/css" rel="stylesheet" href="sirtoy.css"/>
+ <title>SIR toy</title>
+ </head>
+
+<body>
+
+  <div id="container">
+
+  <div id="epicurves"></div>
+
+  <div id="counters">
+    <span id="susceptible"><span id="count_S">0</span> susceptible</span><br />
+    <span id="infected"><span id="count_I">0</span> infected</span><br />
+    <span id="recovered"><span id="count_R">0</span> recovered</span>
+ </div>
+
+ <div id="controls">
+   <span>p(<span style="color: #0ff">S</span> + <span style="color: #ff0">I</span> &rarr; <span style="color: #ff0">I</span> + <span style="color: #ff0">I</span>) = <input id="p_SI" type="text" name="p_SI" value="0.00"></input></span><br />
+   <span>p(<span style="color: #ff0">I</span> &rarr; <span style="color: #f0f">R</span>) = <input id="p_IR" type="text" name="p_IR" value="0.00"></input></span>
+ </div>
+
+  <div id="graph-layout">
+    <div id="graph-control">
+      <span id="start-text">click a susceptible node to infect it</span>
+      <button id="reset-button">reset</button>
+    </div>
+  </div>
+
+  <div id="credits">by <a href="http://isiosf.isi.it/~cattuto/">Ciro Cattuto</a>, using <a href="http://mbostock.github.com/d3/">d3.js</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://code.google.com/p/flot/">flot</a>, and help from <a href="http://knowledgecartography.org/">Marco Quaggiotto</a></div>
+  </div>
+
+  <script type="text/javascript" src="sirtoy.js"></script>
+  
+ </body>                                                                 
+</html>
