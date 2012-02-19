@@ -26,7 +26,6 @@ function reset_history () {
   timeseries.S.data.push([count, epi_state.S]);
   timeseries.I.data.push([count, epi_state.I]);
   timeseries.R.data.push([count, epi_state.R]);
-
 }
 
 reset_history();
@@ -62,13 +61,13 @@ var w = 900,
     fill = d3.scale.category20();
 
 var vis = d3.select("#graph-layout")
-    .insert("svg:svg", "#graph-control")
+    .append("svg:svg")
     .attr("width", w)
     .attr("height", h);
 
 var force = d3.layout.force()
       .charge(-100)
-      .friction(0.7)
+      .friction(0.6)
       .gravity(0.02)
       .linkDistance(100)
       .nodes(nodeArray)
@@ -108,6 +107,9 @@ function run_SIR() {
     if (running == 0)
        return;
 
+    for (k in nodeArray)
+        nodeArray[k].new_state = nodeArray[k].state;
+
     for (k in edgeArray) {
 		i = edgeArray[k].source;
 		j = edgeArray[k].target;
@@ -116,9 +118,9 @@ function run_SIR() {
             tmp = i; i = j; j = tmp;
         }
 
-        if (i.state == "I" && j.state == "S") {
+        if (i.state == "I" && j.state == "S" && j.new_state == "S") {
           if (Math.random() < p_SI) {
-		     j.state = "I";
+             j.new_state = "I";
              epi_state.I ++;
              epi_state.S --;
           }
@@ -128,14 +130,17 @@ function run_SIR() {
     for (k in nodeArray) {
 	   if (nodeArray[k].state == "I") {
           if (Math.random() < p_IR) {
-		     nodeArray[k].state = "R";
+             nodeArray[k].new_state = "R";
              epi_state.R ++;
              epi_state.I --;
           }
        }
     }
 
-	update_graph();
+    for (k in nodeArray)
+        nodeArray[k].state = nodeArray[k].new_state;
+
+    update_graph();
 
     if (running == 1) {
 	count++;
@@ -172,7 +177,7 @@ function update_graph () {
       .attr("r", function(d) { return 3*Math.sqrt(d.k); })
       .style("fill", function(d) { return sir_color[d.state]; } )
       .call(force.drag)
-      .on("click", function(d,i) { if (valid_data == 1 && d.state == "S") {d.state = "I"; epi_state.S--; epi_state.I++; running = 1; $("#start-text").fadeOut(); }} );
+      .on("click", function(d,i) { if (running == 0 && valid_data == 1 && d.state == "S") {d.state = "I"; epi_state.S--; epi_state.I++; running = 1; $("#start-text").fadeOut(); }} );
   x.exit().remove();
 
   force.start();
@@ -187,7 +192,6 @@ function update_plot () {
 
 
 function update_counters () {
-  $("#timestamp").html('t = ' + count);
   $("#count_S").html(epi_state.S);
   $("#count_I").html(epi_state.I);
   $("#count_R").html(epi_state.R);
