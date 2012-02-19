@@ -111,8 +111,8 @@ function run_SIR() {
         nodeArray[k].new_state = nodeArray[k].state;
 
     for (k in edgeArray) {
-		i = edgeArray[k].source;
-		j = edgeArray[k].target;
+        i = edgeArray[k].source;
+        j = edgeArray[k].target;
 
         if (i.state == "S" && j.state == "I") {
             tmp = i; i = j; j = tmp;
@@ -128,7 +128,7 @@ function run_SIR() {
     }
 
     for (k in nodeArray) {
-	   if (nodeArray[k].state == "I") {
+        if (nodeArray[k].state == "I") {
           if (Math.random() < p_IR) {
              nodeArray[k].new_state = "R";
              epi_state.R ++;
@@ -142,8 +142,7 @@ function run_SIR() {
 
     update_graph();
 
-    if (running == 1) {
-	count++;
+    count++;
 
     timeseries.S.data.push([count, epi_state.S]);
     timeseries.I.data.push([count, epi_state.I]);
@@ -155,7 +154,6 @@ function run_SIR() {
 
     if (epi_state.I == 0)
        running = 0;
-    }
 }
 
 function update_graph () {
