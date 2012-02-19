@@ -49,7 +49,7 @@ span#recovered {
 
 span#count_S, span#count_I, span#count_R {
    font-size: 48px;
-   font-weight:bold;
+   font-weight: bold;
 }
 
 div#graph-layout {
@@ -72,10 +72,6 @@ div#epicurves {
    float: left;
 }
 
-span#counters {
-   text-align: left;
-}
-
 circle.node {
   stroke: #000;
   stroke-width: 1.5px;
@@ -92,13 +88,7 @@ div#graph-control {
    position: absolute;
    top: 0px;
    width: 100%;
-   z-index: 0;
-}
-
-button#reset-button {
-  float: right;
-  font-size: 28px;
-  color: #666;
+   pointer-events: none;
 }
 
 span#start-text {
@@ -107,6 +97,13 @@ span#start-text {
   float: left;
   color: #666;
   padding: 10px;
+}
+
+button#reset-button {
+  float: right;
+  font-size: 28px;
+  color: #666;
+  pointer-events: all;
 }
 
 div#credits {
