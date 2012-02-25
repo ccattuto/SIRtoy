@@ -53,7 +53,6 @@ span#count_S, span#count_I, span#count_R {
 }
 
 div#graph-layout {
-   width: 900px;
    height: 500px;
    margin: 20px;
    background: #fafafa;

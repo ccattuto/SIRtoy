@@ -56,9 +56,8 @@ for (i in nodeArray) {
 }
 
 
-var w = 900,
-    h = 500,
-    fill = d3.scale.category20();
+var w = "100%";
+var h = 500;
 
 var vis = d3.select("#graph-layout")
     .append("svg:svg")
@@ -72,7 +71,7 @@ var force = d3.layout.force()
       .linkDistance(100)
       .nodes(nodeArray)
       .links(edgeArray)
-      .size([w, h]);
+      .size([900, h]);
 
   force.on("tick", function() {
 	vis.selectAll("line.link")
